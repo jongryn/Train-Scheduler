@@ -1,6 +1,6 @@
 # Train-Scheduler
 
-Link: 
+Link: https://jongryn.github.io/Train-Scheduler/
 
 Firebase Assignment - Train Scheduler (Basic - Recommended)
 Because that Rock Paper Scissors Game is Too Damn Hard
