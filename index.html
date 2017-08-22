@@ -1,23 +1,28 @@
 <!-- Created: July 29, 2017 12:00 AM
 Author: Jonathan Gryn
-Revisions: Jon (7/29/17) - Added html-->
+Revisions: Jon (7/29/17) - Added html
+           Jon (8/22/17) - Fixed bugs -->
 
 <!DOCTYPE html>
-<html lan="US-en">
+<html lan="en-us">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>TrainTime</title>
 
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  <!-- Bootstrap is used to make game look nicer -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   <!-- Bootstrap -->
+   <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <!-- jquery CDN -->
-  <script src='https://code.jquery.com/jquery.js'></script>
+  <!-- jQuery -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 
-  <!-- MomentJS CDN -->
+  <!-- Moment.js Reference -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
   <!-- Firebase CDN -->
@@ -25,58 +30,84 @@ Revisions: Jon (7/29/17) - Added html-->
 
 </head>
 <body>
-
-  <div class='container'>
-    <div class='row'>
-      <div class='card-panel z-depth-2 orange accent-3 whtie-text'>
-        <h3 class='center-align'>Train Schedule</h3>
-      </div>
-    </div>
-    <div class='row'>
-      <!-- Display Panel -->
-      <div class='card-panel trainInfo'>
-        <h4 class='center-align'>Current Train Schedule</h4>
-        <table class="table striped center bordered responsive-table" id='trainTable'>
-          <thead>
-            <tr>
-              <th>Train Name</th>
-              <th>Destination</th>
-              <th>Frequency (minutes)</th>
-              <th>Next Arrival</th>
-              <th>Minutes Away</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Info Submission Panel -->
-    <div class='row'>
-      <div class='card-panel'>
-        <h4 class='center-align'>Add Your Train</h4>
-        <form>
-          <div class="input-field col s12">
-            <input type="text" class="validate" id="trainNameInput">
-            <label for="">Train Name</label>
-          </div>
-          <div class="input-field col s12">
-            <input type="time" class="validate" id="firstInput">
-            <label class='active' for="">First Train (HH: mm Military Time)</label>
-          </div>
-          <div class="input-field col s12">
-            <input type="number" class="validate" id="frequencyInput">
-            <label for="">Frequency (minutes)</label>
-          </div>
-          <button type="submit" class="btn orange accent-3" id="addTrainBtn">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
   
-<!-- Adds a link to the javascript file. Loaded at the bottom so it waits for the HTML content to display first.
-  If you put this at the top it will crash, because the HTML IDs won't exist yet.-->
-  <script src="assets/javascript/logic.js"></script>
+  <!-- Train Time -->
+  <div class='container'>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron" style="background-color: #7F462C; color: white;">
+      <h1 class="text-center">Anytime is Train Time</h1>
+      <h3 class="text-center">Choo Choo. Chee Chee.</h3>
+    </div>
+
+    <div class='row'>
+
+      <div class="col-lg-12">
+
+      <!-- Train Schedule -->
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-hover" id='train-table'>
+              <thead>
+                <tr>
+                  <th>Train Name</th>
+                  <th>Destination</th>
+                  <th>Frequency (minutes)</th>
+                  <th>Next Arrival</th>
+                  <th>Minutes Away</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      <!-- Add Train -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Add Train</strong></h3>
+        </div>
+        <div class="panel-body">
+
+          <!-- Entry Form -->
+          <form>
+            <div class="form-group">
+              <label for="train-name-input">Train Name</label>
+              <input type="text" class="form-control" id="train-name-input">
+            </div>
+            <div class="form-group">
+              <label for="destination-input">Destination</label>
+              <input type="text" class="form-control" id="destination-input">
+            </div>
+            <div class="form-group">
+              <label for="first-train-input">First Train Time (HH:mm - military time)</label>
+              <input type="text" class="form-control" id="first-train-input">
+            </div>
+            <div class="form-group">
+              <label for="frequency-input">Frequency (min)</label>
+              <input type="text" class="form-control" id="frequency-input">
+            </div>
+            <button type="submit" class="btn btn-primary" id="add-train-btn">Submit</button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Script -->
+<script src="assets/javascript/logic.js"></script>
+
 </body>
+
 </html>
