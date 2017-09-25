@@ -2,9 +2,18 @@
 // Created: July 29, 2017 12:00 AM
 // Author: Jonathan Gryn
 // Revisions: Jon (7/29/17) - Added style   
+// 			  Jon (8/22/17) - Added new background image and change color of jumbotron
 */
 
 body {
-  background: url(https://wallpapersafari.com/star-wars-background-wallpaper/);
+  background: url(https://github.com/jongryn/Train-Scheduler/blob/master/assets/images/IMG_536466.jpg?raw=true);
   font-family: arial, times, cursive, serif;
 }
+.jumbotron {
+  background-color:transparent !important;
+}
+/*.panel > .panel-heading {
+  background-image: none;
+  background-color: red;
+  color: white;
+}*/
